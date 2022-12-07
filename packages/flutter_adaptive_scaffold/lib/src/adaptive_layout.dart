@@ -213,7 +213,7 @@ class _AdaptiveLayoutState extends State<AdaptiveLayout>
   void initState() {
     if (widget.internalAnimations) {
       _controller = AnimationController(
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 250),
         vsync: this,
       )..forward();
     } else {

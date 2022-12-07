@@ -35,46 +35,54 @@ class MyHomePage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            color: const Color.fromARGB(255, 255, 201, 197),
+            color: const Color.fromARGB(255, 90, 139, 174),
             height: 400,
+            child: Center(child: Text('${i + 1}', style: const TextStyle(fontSize: 30))),
           ),
         )
     ];
 
     return BottomNavigationBarTheme(
-        data: const BottomNavigationBarThemeData(
-          unselectedItemColor: Colors.black,
-          selectedItemColor: Colors.black,
-          backgroundColor: Colors.white,
-        ),
-        child: AdaptiveScaffold(
-            // An option to override the default breakpoints used for small, medium,
-            // and large.
-            smallBreakpoint: const WidthPlatformBreakpoint(end: 700),
-            mediumBreakpoint:
-                const WidthPlatformBreakpoint(begin: 700, end: 1000),
-            largeBreakpoint: const WidthPlatformBreakpoint(begin: 1000),
-            useDrawer: false,
-            destinations: const <NavigationDestination>[
-              NavigationDestination(icon: Icon(Icons.inbox), label: 'Inbox'),
-              NavigationDestination(
-                  icon: Icon(Icons.article), label: 'Articles'),
-              NavigationDestination(icon: Icon(Icons.chat), label: 'Chat'),
-              NavigationDestination(
-                  icon: Icon(Icons.video_call), label: 'Video')
-            ],
-            body: (_) => GridView.count(crossAxisCount: 2, children: children),
-            smallBody: (_) => ListView.builder(
-                  itemCount: children.length,
-                  itemBuilder: (_, int idx) => children[idx],
-                ),
-            // Define a default secondaryBody.
-            secondaryBody: (_) =>
-                Container(color: const Color.fromARGB(255, 234, 158, 192)),
-            // Override the default secondaryBody during the smallBreakpoint to be
-            // empty. Must use AdaptiveScaffold.emptyBuilder to ensure it is properly
-            // overridden.
-            smallSecondaryBody: AdaptiveScaffold.emptyBuilder));
+      data: const BottomNavigationBarThemeData(
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.black,
+        backgroundColor: Colors.white,
+      ),
+      child: AdaptiveScaffold(
+        // An option to override the default breakpoints used for small, medium,
+        // and large.
+        smallBreakpoint: const WidthPlatformBreakpoint(end: 700),
+        mediumBreakpoint: const WidthPlatformBreakpoint(begin: 700, end: 1000),
+        largeBreakpoint: const WidthPlatformBreakpoint(begin: 1000),
+        useDrawer: false,
+        destinations: const <NavigationDestination>[
+          NavigationDestination(icon: Icon(Icons.inbox), label: 'Inbox'),
+          NavigationDestination(icon: Icon(Icons.article), label: 'Articles'),
+          NavigationDestination(icon: Icon(Icons.chat), label: 'Chat'),
+          NavigationDestination(icon: Icon(Icons.video_call), label: 'Video')
+        ],
+        body: (_) => GridView.count(crossAxisCount: 2, children: children),
+        smallBody: (_) {
+          return ListView.builder(
+            itemCount: children.length,
+            itemBuilder: (_, int idx) => children[idx],
+          );
+        },
+        // Define a default secondaryBody.
+        secondaryBody: (_) {
+          return const Center(
+            child: AspectRatio(
+              aspectRatio: 1.0,
+              child: FlutterLogo(),
+            ),
+          );
+        },
+        // Override the default secondaryBody during the smallBreakpoint to be
+        // empty. Must use AdaptiveScaffold.emptyBuilder to ensure it is properly
+        // overridden.
+        smallSecondaryBody: AdaptiveScaffold.emptyBuilder,
+      ),
+    );
   }
   // #enddocregion
 }

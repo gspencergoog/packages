@@ -248,7 +248,7 @@ class AdaptiveScaffold extends StatefulWidget {
   /// Takes in a [selectedIndex] property for the current selected item in
   /// the [NavigationRail] and [extended] for whether the [NavigationRail]
   /// is extended or not.
-  static Builder standardNavigationRail({
+  static Widget standardNavigationRail({
     required List<NavigationRailDestination> destinations,
     double width = 72,
     int selectedIndex = 0,
@@ -303,7 +303,7 @@ class AdaptiveScaffold extends StatefulWidget {
 
   /// Public helper method to be used for creating a [BottomNavigationBar] from
   /// a list of [NavigationDestination]s.
-  static Builder standardBottomNavigationBar({
+  static Widget standardBottomNavigationBar({
     required List<NavigationDestination> destinations,
     int currentIndex = 0,
     double iconSize = 24,
@@ -325,7 +325,7 @@ class AdaptiveScaffold extends StatefulWidget {
 
   /// Public helper method to be used for creating a staggered grid following m3
   /// specs from a list of [Widget]s
-  static Builder toMaterialGrid({
+  static Widget toMaterialGrid({
     List<Widget> thisWidgets = const <Widget>[],
     List<Breakpoint> breakpoints = const <Breakpoint>[
       Breakpoints.small,
@@ -382,7 +382,7 @@ class AdaptiveScaffold extends StatefulWidget {
   }
 
   /// Animation from bottom offscreen up onto the screen.
-  static AnimatedWidget bottomToTop(Widget child, Animation<double> animation) {
+  static Widget bottomToTop(Widget child, Animation<double> animation) {
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(0, 1),
@@ -393,7 +393,7 @@ class AdaptiveScaffold extends StatefulWidget {
   }
 
   /// Animation from on the screen down off the screen.
-  static AnimatedWidget topToBottom(Widget child, Animation<double> animation) {
+  static Widget topToBottom(Widget child, Animation<double> animation) {
     return SlideTransition(
       position: Tween<Offset>(
         begin: Offset.zero,
@@ -404,7 +404,7 @@ class AdaptiveScaffold extends StatefulWidget {
   }
 
   /// Animation from left off the screen into the screen.
-  static AnimatedWidget leftOutIn(Widget child, Animation<double> animation) {
+  static Widget leftOutIn(Widget child, Animation<double> animation) {
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(-1, 0),
@@ -415,7 +415,7 @@ class AdaptiveScaffold extends StatefulWidget {
   }
 
   /// Animation from on screen to left off screen.
-  static AnimatedWidget leftInOut(Widget child, Animation<double> animation) {
+  static Widget leftInOut(Widget child, Animation<double> animation) {
     return SlideTransition(
       position: Tween<Offset>(
         begin: Offset.zero,
@@ -426,7 +426,7 @@ class AdaptiveScaffold extends StatefulWidget {
   }
 
   /// Animation from right off screen to on screen.
-  static AnimatedWidget rightOutIn(Widget child, Animation<double> animation) {
+  static Widget rightOutIn(Widget child, Animation<double> animation) {
     return SlideTransition(
       position: Tween<Offset>(
         begin: const Offset(1, 0),
